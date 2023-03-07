@@ -1,20 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import '../src/styles/AuthStyles.css';
+import '../src/styles/CartStyles.css';
+import '../src/styles/CategoryProductStyles.css';
+import '../src/styles/Homepage.css';
+import '../src/styles/ProductDetailsStyles.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom';
-import {AuthProvider} from './context/auth';
+import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './context/auth';
+import { SearchProvider } from './context/search';
 import 'antd/dist/reset.css';
+import { CartProvider } from './context/cart';
+import HomePage from './pages/HomePage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <AuthProvider>
-  <BrowserRouter>
-  
-    <App />
-    
-  
-  </BrowserRouter>
+    <SearchProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </CartProvider>
+    </SearchProvider>
   </AuthProvider>
 );
 
